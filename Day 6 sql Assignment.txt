@@ -155,7 +155,7 @@ select * from employee_card_details;
 select * from item_master;
 select * from employee_master;
 select * from loan_card_master;
-/*-----------------QUERIES----------------------*/
+/*-----------------QUERIES---------------------*/
 
 QQ01. Display distinct Employee id, Employee name who kept the item issued for more than a year.
 Ans:- select distinct employee_id,employee_name from employee_master natural join employee_issue_details where datediff(return_date,issue_date)>365;
