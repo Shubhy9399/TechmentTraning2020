@@ -179,6 +179,20 @@ Ans:- select * from employee_master;
 Ans:- select count(*) from item_master  where issue_status='yes';
 
 QQ08.Find the max of total valuation of employees whose purchase is in two different categories.
+Ans:- select em.employee_id, employee_name, sum(item_valuation)
+ from employee_master em, item_master im, 
+employee_issue_details eid
+ where em.employee_id=eid.employee_id and eid.item_id=im.item_id
+ 
+group by em.employee_id
+ having sum(item_valuation) 
+in(select max(c) from(select sum(item_valuation) c 
+ from item_master im, employee_issue_details eid, 
+employee_master em
+where im.item_id=eid.item_id and eid.employee_id=em.employee_id 
+group by em.employee_id)a) and 
+count(distinct item_category)>=2
+ order by em.employee_id;
 
 
 09.Display count of employees who have recieved loan.
@@ -193,6 +207,7 @@ Ans:- select * from employee_master where employee_id not in (select employee_id
 
 
 QQ13. Display emp records for whom never issued an item as a loan order based on emp id 
+ Ans:- SELECT * FROM `employee_master` WHERE `employee_id` NOT IN(SELECT `employee_id` FROM employee_card_details)
 
 QQ14. Display empid,name who has the highest valuation. if multiple records then display 
 in order of emp id 
@@ -207,8 +222,10 @@ Ans:- select issue_status, count(*) `furniture` from item_master  where item_cat
 17. Display empid and total valuation of each employee where employee must have at least one product issued
 
 18. Disp empid,name and count of categories of each emp having at least 2 categories
+Ans:- SELECT * FROM `employee_master` WHERE `employee_id` IN(SELECT `employee_id` FROM `employee_issue_details` HAVING COUNT(`employee_id`) > 2)
 
 19. Display name of categories and no of items in each category and sort in order of no of items
 Ans:- select item_category as name of categories,count(*)from item_master order by 
 
 20. Display empid,name with their total valuations.
+Ans:-  SELECT ei.employee_id,sum(im.item_valuation) FROM employee_issue_details as ei NATURAL JOIN item_master as im GROUP BY `employee_id`
