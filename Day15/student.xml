@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE students SYSTEM "studentstructure.dtd">
+<students>
+
+  <student>
+  <name>Rina</name>
+  <rollno>25</rollno>
+  </student>
+  
+  <student>
+   <name>Rahul</name>
+  <rollno>23</rollno>
+  </student>
+  
+   <student>
+   <name>Seema</name>
+   <rollno>24</rollno>
+  </student>
+  
+</students>
