@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Table Form</title>
+</head>
+<body>
+
+<script type="text/javascript" >
+
+ var companyMenu={
+    "employees":[{"id":1,"name":"arun"},{"id":2,"name":"sapna"},{"id":3,"name":"apurva"}],
+    "companyName":"Techment"
+     };
+ 
+ document.write(company+"<br>");
+ document.write(typeof(company)+"<br>");
+
+ JSON.stingify(company);
+ var mystr=JSON.stringify(company);
+ document.write(mystr+"<br>");
+ document.write(typeof(mystr)+"<br>");
+ 
+ document.write(companyMenu.companyName+"<br>");
+ document.write("--------------");
+ document.write("<br>");
+for(x in companyMenu.employees)
+	{
+	  document.write("<br>");
+	  document.write("|"+companyMenu.employees[x].id+" | "+companyMenu.employees[x].name);
+	}
+
+
+</script>
+
+</body>
+</html>
