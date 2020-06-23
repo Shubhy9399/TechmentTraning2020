@@ -1,0 +1,119 @@
+<html>
+    <head>
+       <script src="jquery.min.js"></script>
+     <script src="bootstrap.min.js"></script>
+     <link href="bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="login.css">
+     <script src="https://apis.google.com/js/platform.js" async defer></script>
+      
+     <meta name="google-signin-scope" content="profile email">
+
+     <meta name="google-signin-client_id" content="870656439910-hoois480mb1g1a67bt7aj0i3jqvi0bp7.apps.googleusercontent.com">
+
+  </head>
+
+  <body>
+   <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" style="color: blue;" href="#">ABC Restaurant</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">About Us</a></li>
+      <li><a href="Menu.html">Menu</a></li>
+      <li><a href="location.html">Locations</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="row1">
+<div class="row2">
+  <div class="col1"></div>
+  <div class="col2">
+
+    <center><h1 class="h1">Please Login!</h1></center>
+    <table class="table">
+  <tr>
+    <tr><td>Username</td><td><input class="form-control" id="userid" type="text" placeholder="Enter-Your-Name"  required></td></tr>
+    <tr><td>Password</td><td><input class="form-control" type="password" id="pwd" placeholder="Enter-Your-Password" required></td></tr>
+    <tr><td><input type="checkbox" checked="checked" name="remember"> Remember me</td><td></td></tr>
+    <tr><td></td><td><button class="button" >Submit</button></td></tr>
+    <tr><td></td><td>
+      <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div></td></tr>
+
+        </tr>
+   </table>
+ 
+<img id="myImg"><br>
+<p id="name"></p> 
+
+  
+<div id="status"></div>
+
+
+
+<script type="text/javascript">
+      function onSignIn(googleUser) {
+      // window.location.href='success.jsp';
+
+        
+      
+          var profile = googleUser.getBasicProfile();
+          var imagurl=profile.getImageUrl();
+          var name=profile.getName();
+          var email=profile.getEmail();
+          document.getElementById("myImg").src = imagurl;
+          document.getElementById("name").innerHTML = name;
+                   document.getElementById("myP").style.visibility = "hidden";
+          document.getElementById("status").innerHTML = 'Welcome '+name+'!<a href=success.jsp?email='+email+'&name='+name+'/>Continue with Google login</a></p>'
+
+           
+           
+       }
+      
+      
+      function myFunction() {
+        gapi.auth2.getAuthInstance().disconnect();
+          location.reload();
+      }
+      <button onclick="myFunction()">Signout</button>
+</script>
+
+
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Register for free</h5>
+      </li>
+      <li class="list-inline-item">
+        <a href="login.html" class="btn btn-primary">Sign up!</a><br>
+      </li>
+    </ul>
+    <!-- Call to action -->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer">@ 2020 Copyright:
+    <a href="https://mdbootstrap.com/">ABC Restaurant.com</a>
+  </div>
+  <!-- Copyright -->
+
+</div>
+<!-- Footer -->
+     </div>
+  </body>
+</html>
